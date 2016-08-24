@@ -9,7 +9,7 @@
     <url>http://maven.apache.org</url>
 
     <properties>
-        <project.build.sourceEncoding>GBK</project.build.sourceEncoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- spring版本号 -->
         <spring.version>4.3.1.RELEASE</spring.version>
         <!-- jackson 版本号 -->
@@ -77,7 +77,7 @@
             <artifactId>mybatis</artifactId>
             <version>${mybatis.version}</version>
         </dependency>
-        <!-- mybatis-spring包 -->
+        <!-- mapper-spring包 -->
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis-spring</artifactId>
@@ -161,7 +161,7 @@
     <build>
 
         <plugins>
-            <!-- mybatis 代码生成器插件 -->
+            <!-- mapper 代码生成器插件 -->
             <plugin>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
