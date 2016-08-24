@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<!-- 使用 mvn mybatis-generator:generate -->
+<generatorConfiguration>
+
+    <!-- 配置文件 -->
+<!--
+    <properties resource="database.properties"/>
+-->
+
+    <!--- <数据库驱动 /> -->
+<!--
+    <classPathEntry  location="E:/worpspace/recruitment_new/src/main/webapp/WEB-INF/lib/ojdbc14.jar"/>
+-->
+
+    <!-- defaultModelType="flat" 所有内容（主键，blob）等全部生成在一个对象中 -->
+    <context id="DB2Tables"  targetRuntime="MyBatis3" defaultModelType="flat">
+
+        <!-- plugin -->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+
+        <commentGenerator>
+            <!--<property name="suppressDate" value="true"/>-->
+            <!--<是否去除自动生成的注释 true：是 ： false:否 />-->
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!--<数据库链接URL，用户名、密码 />-->
+        <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
+                        connectionURL="jdbc:oracle:thin:@172.16.88.92:1521:btgd"
+                        userId="gddb_bte" password="gpdi_gd">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <!--
+                true：使用BigDecimal对应DECIMAL和 NUMERIC数据类型
+                false：默认,
+                    scale>0;length>18：使用BigDecimal;
+                    scale=0;length[10,18]：使用Long；
+                    scale=0;length[5,9]：使用Integer；
+                    scale=0;length<5：使用Short；
+             -->
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- java模型创建器，是必须要的元素
+            负责：1，key类（见context的defaultModelType）；2，java类；3，查询类
+            targetPackage：生成的类要放的包，真实的包受enableSubPackages属性控制；
+            targetProject：目标项目，指定一个存在的目录下，生成的内容会放到指定目录中，如果目录不存在，MBG不会自动建目录
+         -->
+        <javaModelGenerator targetPackage="com.gpdi.dataFactory.plan.entity" targetProject="src/main/java">
+            <!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false -->
+            <property name="enableSubPackages" value="true"/>
+            <!-- 设置是否在getter方法中，对String类型字段调用trim()方法 -->
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- 生成SQL map的XML文件生成器，
+            注意，在Mybatis3之后，我们可以使用mapper.xml文件+Mapper接口（或者不用mapper接口），
+                或者只使用Mapper接口+Annotation，所以，如果 javaClientGenerator配置中配置了需要生成XML的话，这个元素就必须配置
+            targetPackage/targetProject:同javaModelGenerator
+         -->
+        <sqlMapGenerator targetPackage="com.gpdi.dataFactory.plan.mybatis" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!-- 对于mybatis来说，即生成Mapper接口，注意，如果没有配置该元素，那么默认不会生成Mapper接口
+            targetPackage/targetProject:同javaModelGenerator
+            type：选择怎么生成mapper接口（在MyBatis3/MyBatis3Simple下）：
+                1，ANNOTATEDMAPPER：会生成使用Mapper接口+Annotation的方式创建（SQL生成在annotation中），不会生成对应的XML；
+                2，MIXEDMAPPER：使用混合配置，会生成Mapper接口，并适当添加合适的Annotation，但是XML会生成在XML中；
+                3，XMLMAPPER：会生成Mapper接口，接口完全依赖XML；
+            注意，如果context是MyBatis3Simple：只支持ANNOTATEDMAPPER和XMLMAPPER
+        -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.gpdi.dataFactory.plan.mybatis" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!--&lt;!&ndash; <要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名 />&ndash;&gt;
+        <table tableName="account" domainObjectName="Account"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>-->
+        <table tableName="T_DATA_PLAN" domainObjectName="DataPlan"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+        <table tableName="T_ORDER" domainObjectName="Order"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+        <table tableName="BAS_DEPARTMENT" domainObjectName="BaseDepartment"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+        <table tableName="T_ORDER_TYPE" domainObjectName="OrderType"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+        </table>
+    </context>
+</generatorConfiguration>
