@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gpdi.dataFactory.plan.mapper.DataPlanMapper" >
+  <resultMap id="BaseResultMap" type="com.gpdi.dataFactory.plan.entity.DataPlan" >
+    <id column="DPLID" property="dplid" jdbcType="VARCHAR" />
+    <result column="DPLNAME" property="dplname" jdbcType="VARCHAR" />
+    <result column="DPLTYPE" property="dpltype" jdbcType="VARCHAR" />
+    <result column="DPLSTARTDT" property="dplstartdt" jdbcType="DATE" />
+    <result column="DPLENDDT" property="dplenddt" jdbcType="DATE" />
+    <result column="DPLPLANNER" property="dplplanner" jdbcType="VARCHAR" />
+    <result column="DPLPLANTIME" property="dplplantime" jdbcType="DATE" />
+    <result column="INCPLCUST" property="incplcust" jdbcType="DECIMAL" />
+    <result column="INCPFCUST" property="incpfcust" jdbcType="DECIMAL" />
+    <result column="INCPLCUSTINFO" property="incplcustinfo" jdbcType="DECIMAL" />
+    <result column="INCPFCUSTINFO" property="incpfcustinfo" jdbcType="DECIMAL" />
+    <result column="INCPLCUSTPOI" property="incplcustpoi" jdbcType="DECIMAL" />
+    <result column="INCPFCUSTPOI" property="incpfcustpoi" jdbcType="DECIMAL" />
+    <result column="FIXPLCUST" property="fixplcust" jdbcType="DECIMAL" />
+    <result column="FIXPFCUSTINFO" property="fixpfcustinfo" jdbcType="DECIMAL" />
+    <result column="FIXPLCUSTPOI" property="fixplcustpoi" jdbcType="DECIMAL" />
+    <result column="CREATEDT" property="createdt" jdbcType="DATE" />
+    <result column="FIXDT" property="fixdt" jdbcType="DATE" />
+    <result column="DPLFIXMAN" property="dplfixman" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    DPLID, DPLNAME, DPLTYPE, DPLSTARTDT, DPLENDDT, DPLPLANNER, DPLPLANTIME, INCPLCUST, 
+    INCPFCUST, INCPLCUSTINFO, INCPFCUSTINFO, INCPLCUSTPOI, INCPFCUSTPOI, FIXPLCUST, FIXPFCUSTINFO, 
+    FIXPLCUSTPOI, CREATEDT, FIXDT, DPLFIXMAN
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_DATA_PLAN
+    where DPLID = #{dplid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from T_DATA_PLAN
+    where DPLID = #{dplid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.gpdi.dataFactory.plan.entity.DataPlan" >
+    insert into T_DATA_PLAN (DPLID, DPLNAME, DPLTYPE, 
+      DPLSTARTDT, DPLENDDT, DPLPLANNER, 
+      DPLPLANTIME, INCPLCUST, INCPFCUST, 
+      INCPLCUSTINFO, INCPFCUSTINFO, INCPLCUSTPOI, 
+      INCPFCUSTPOI, FIXPLCUST, FIXPFCUSTINFO, 
+      FIXPLCUSTPOI, CREATEDT, FIXDT, 
+      DPLFIXMAN)
+    values (#{dplid,jdbcType=VARCHAR}, #{dplname,jdbcType=VARCHAR}, #{dpltype,jdbcType=VARCHAR}, 
+      #{dplstartdt,jdbcType=DATE}, #{dplenddt,jdbcType=DATE}, #{dplplanner,jdbcType=VARCHAR}, 
+      #{dplplantime,jdbcType=DATE}, #{incplcust,jdbcType=DECIMAL}, #{incpfcust,jdbcType=DECIMAL}, 
+      #{incplcustinfo,jdbcType=DECIMAL}, #{incpfcustinfo,jdbcType=DECIMAL}, #{incplcustpoi,jdbcType=DECIMAL}, 
+      #{incpfcustpoi,jdbcType=DECIMAL}, #{fixplcust,jdbcType=DECIMAL}, #{fixpfcustinfo,jdbcType=DECIMAL}, 
+      #{fixplcustpoi,jdbcType=DECIMAL}, #{createdt,jdbcType=DATE}, #{fixdt,jdbcType=DATE}, 
+      #{dplfixman,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gpdi.dataFactory.plan.entity.DataPlan" >
+    insert into T_DATA_PLAN
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dplid != null" >
+        DPLID,
+      </if>
+      <if test="dplname != null" >
+        DPLNAME,
+      </if>
+      <if test="dpltype != null" >
+        DPLTYPE,
+      </if>
+      <if test="dplstartdt != null" >
+        DPLSTARTDT,
+      </if>
+      <if test="dplenddt != null" >
+        DPLENDDT,
+      </if>
+      <if test="dplplanner != null" >
+        DPLPLANNER,
+      </if>
+      <if test="dplplantime != null" >
+        DPLPLANTIME,
+      </if>
+      <if test="incplcust != null" >
+        INCPLCUST,
+      </if>
+      <if test="incpfcust != null" >
+        INCPFCUST,
+      </if>
+      <if test="incplcustinfo != null" >
+        INCPLCUSTINFO,
+      </if>
+      <if test="incpfcustinfo != null" >
+        INCPFCUSTINFO,
+      </if>
+      <if test="incplcustpoi != null" >
+        INCPLCUSTPOI,
+      </if>
+      <if test="incpfcustpoi != null" >
+        INCPFCUSTPOI,
+      </if>
+      <if test="fixplcust != null" >
+        FIXPLCUST,
+      </if>
+      <if test="fixpfcustinfo != null" >
+        FIXPFCUSTINFO,
+      </if>
+      <if test="fixplcustpoi != null" >
+        FIXPLCUSTPOI,
+      </if>
+      <if test="createdt != null" >
+        CREATEDT,
+      </if>
+      <if test="fixdt != null" >
+        FIXDT,
+      </if>
+      <if test="dplfixman != null" >
+        DPLFIXMAN,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dplid != null" >
+        #{dplid,jdbcType=VARCHAR},
+      </if>
+      <if test="dplname != null" >
+        #{dplname,jdbcType=VARCHAR},
+      </if>
+      <if test="dpltype != null" >
+        #{dpltype,jdbcType=VARCHAR},
+      </if>
+      <if test="dplstartdt != null" >
+        #{dplstartdt,jdbcType=DATE},
+      </if>
+      <if test="dplenddt != null" >
+        #{dplenddt,jdbcType=DATE},
+      </if>
+      <if test="dplplanner != null" >
+        #{dplplanner,jdbcType=VARCHAR},
+      </if>
+      <if test="dplplantime != null" >
+        #{dplplantime,jdbcType=DATE},
+      </if>
+      <if test="incplcust != null" >
+        #{incplcust,jdbcType=DECIMAL},
+      </if>
+      <if test="incpfcust != null" >
+        #{incpfcust,jdbcType=DECIMAL},
+      </if>
+      <if test="incplcustinfo != null" >
+        #{incplcustinfo,jdbcType=DECIMAL},
+      </if>
+      <if test="incpfcustinfo != null" >
+        #{incpfcustinfo,jdbcType=DECIMAL},
+      </if>
+      <if test="incplcustpoi != null" >
+        #{incplcustpoi,jdbcType=DECIMAL},
+      </if>
+      <if test="incpfcustpoi != null" >
+        #{incpfcustpoi,jdbcType=DECIMAL},
+      </if>
+      <if test="fixplcust != null" >
+        #{fixplcust,jdbcType=DECIMAL},
+      </if>
+      <if test="fixpfcustinfo != null" >
+        #{fixpfcustinfo,jdbcType=DECIMAL},
+      </if>
+      <if test="fixplcustpoi != null" >
+        #{fixplcustpoi,jdbcType=DECIMAL},
+      </if>
+      <if test="createdt != null" >
+        #{createdt,jdbcType=DATE},
+      </if>
+      <if test="fixdt != null" >
+        #{fixdt,jdbcType=DATE},
+      </if>
+      <if test="dplfixman != null" >
+        #{dplfixman,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gpdi.dataFactory.plan.entity.DataPlan" >
+    update T_DATA_PLAN
+    <set >
+      <if test="dplname != null" >
+        DPLNAME = #{dplname,jdbcType=VARCHAR},
+      </if>
+      <if test="dpltype != null" >
+        DPLTYPE = #{dpltype,jdbcType=VARCHAR},
+      </if>
+      <if test="dplstartdt != null" >
+        DPLSTARTDT = #{dplstartdt,jdbcType=DATE},
+      </if>
+      <if test="dplenddt != null" >
+        DPLENDDT = #{dplenddt,jdbcType=DATE},
+      </if>
+      <if test="dplplanner != null" >
+        DPLPLANNER = #{dplplanner,jdbcType=VARCHAR},
+      </if>
+      <if test="dplplantime != null" >
+        DPLPLANTIME = #{dplplantime,jdbcType=DATE},
+      </if>
+      <if test="incplcust != null" >
+        INCPLCUST = #{incplcust,jdbcType=DECIMAL},
+      </if>
+      <if test="incpfcust != null" >
+        INCPFCUST = #{incpfcust,jdbcType=DECIMAL},
+      </if>
+      <if test="incplcustinfo != null" >
+        INCPLCUSTINFO = #{incplcustinfo,jdbcType=DECIMAL},
+      </if>
+      <if test="incpfcustinfo != null" >
+        INCPFCUSTINFO = #{incpfcustinfo,jdbcType=DECIMAL},
+      </if>
+      <if test="incplcustpoi != null" >
+        INCPLCUSTPOI = #{incplcustpoi,jdbcType=DECIMAL},
+      </if>
+      <if test="incpfcustpoi != null" >
+        INCPFCUSTPOI = #{incpfcustpoi,jdbcType=DECIMAL},
+      </if>
+      <if test="fixplcust != null" >
+        FIXPLCUST = #{fixplcust,jdbcType=DECIMAL},
+      </if>
+      <if test="fixpfcustinfo != null" >
+        FIXPFCUSTINFO = #{fixpfcustinfo,jdbcType=DECIMAL},
+      </if>
+      <if test="fixplcustpoi != null" >
+        FIXPLCUSTPOI = #{fixplcustpoi,jdbcType=DECIMAL},
+      </if>
+      <if test="createdt != null" >
+        CREATEDT = #{createdt,jdbcType=DATE},
+      </if>
+      <if test="fixdt != null" >
+        FIXDT = #{fixdt,jdbcType=DATE},
+      </if>
+      <if test="dplfixman != null" >
+        DPLFIXMAN = #{dplfixman,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where DPLID = #{dplid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gpdi.dataFactory.plan.entity.DataPlan" >
+    update T_DATA_PLAN
+    set DPLNAME = #{dplname,jdbcType=VARCHAR},
+      DPLTYPE = #{dpltype,jdbcType=VARCHAR},
+      DPLSTARTDT = #{dplstartdt,jdbcType=DATE},
+      DPLENDDT = #{dplenddt,jdbcType=DATE},
+      DPLPLANNER = #{dplplanner,jdbcType=VARCHAR},
+      DPLPLANTIME = #{dplplantime,jdbcType=DATE},
+      INCPLCUST = #{incplcust,jdbcType=DECIMAL},
+      INCPFCUST = #{incpfcust,jdbcType=DECIMAL},
+      INCPLCUSTINFO = #{incplcustinfo,jdbcType=DECIMAL},
+      INCPFCUSTINFO = #{incpfcustinfo,jdbcType=DECIMAL},
+      INCPLCUSTPOI = #{incplcustpoi,jdbcType=DECIMAL},
+      INCPFCUSTPOI = #{incpfcustpoi,jdbcType=DECIMAL},
+      FIXPLCUST = #{fixplcust,jdbcType=DECIMAL},
+      FIXPFCUSTINFO = #{fixpfcustinfo,jdbcType=DECIMAL},
+      FIXPLCUSTPOI = #{fixplcustpoi,jdbcType=DECIMAL},
+      CREATEDT = #{createdt,jdbcType=DATE},
+      FIXDT = #{fixdt,jdbcType=DATE},
+      DPLFIXMAN = #{dplfixman,jdbcType=VARCHAR}
+    where DPLID = #{dplid,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -3,6 +3,9 @@ package com.gpdi.dataFactory.plan.view;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * 类功能描述：计划管理view
@@ -17,10 +20,16 @@ import org.springframework.stereotype.Controller;
  * @since 2016/08/23
  */
 
+@RequestMapping("planView")
 @Controller
 public class PlanView {
 
     private static Logger logger = LoggerFactory.getLogger(PlanView.class);
 
+    @RequestMapping
+    public ModelAndView gotoView(ModelAndView modelAndView){
+        logger.debug("planView start.");
+        return modelAndView;
+    }
 
 }

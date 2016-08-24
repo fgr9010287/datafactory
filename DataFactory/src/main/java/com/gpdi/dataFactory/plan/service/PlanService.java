@@ -1,14 +1,9 @@
 package com.gpdi.dataFactory.plan.service;
 
-import com.gpdi.common.responseEntity.BaseReturn;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import com.gpdi.dataFactory.plan.entity.DataPlan;
 
 /**
- * 类功能描述：计划管理
+ * 类功能描述：计划管理接口类
  * <p/>
  * <p/>
  * 版权所有：www.gpdi.com
@@ -20,11 +15,33 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @since 2016/08/23
  */
 
-@Service
-public class PlanService {
+public interface PlanService {
 
-    private static Logger logger = LoggerFactory.getLogger(PlanService.class);
+    /**
+     * 根据ID查询计划
+     * @param id
+     * @return
+     */
+    DataPlan qryPlanById(String id);
 
+    /**
+     * 新增一个计划
+     * @param dataPlan
+     * @return
+     */
+    int addOne(DataPlan dataPlan);
 
+    /**
+     * 根据ID删除计划
+     * @param id
+     * @return
+     */
+    int delById(String id);
 
+    /**
+     * 更新
+     * @param dataPlan
+     * @return
+     */
+    int update(DataPlan dataPlan);
 }

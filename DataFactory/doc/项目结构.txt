@@ -12,7 +12,7 @@ DataFactory
     --- dataFactory                       主要业务代码模块
        -- plan                            计划管理功能
          -- entity                        计划管理实体类
-         -- mybatis                       mybatis 生成的接口Mapper 与 XML文件
+         -- mapper                       mybatis 生成的接口Mapper 与 XML文件
          -- service                       计划管理主要接口实现
          -- view                          计划管理视图入口
    
